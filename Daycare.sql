@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2023 at 09:58 PM
+-- Generation Time: Feb 13, 2023 at 10:21 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.32
 
@@ -53,6 +53,17 @@ INSERT INTO `Children` (`Child`, `ChildID`, `ClassID`) VALUES
 ('Georgia Pendleton', 2, 2),
 ('Susan Smith', 3, 3),
 ('David White', 4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Comments`
+--
+
+CREATE TABLE `Comments` (
+  `Comments` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ChildID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
