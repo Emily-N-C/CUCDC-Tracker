@@ -21,17 +21,20 @@ if(isset($_POST['submit'])){
     $datas = $_POST['data'];
     $intData = (int)$datas;
     date_default_timezone_set('America/New_York');
-    //echo date('m-d-y h:i:s A');
-    $date= (date('m-d-y h:i:s A'));
+    $changeTime= (date('m-d-y h:i:s A'));
+
+
+    
+
 
     //$allData = implode($datas);
 
-    $sql ="INSERT into `attendance` (ChildID,Date) 
-    VALUES ('$intData','$date')";
+    $sql ="INSERT into `diaper Changes` (ChildID,ChangeTime) 
+    VALUES ('$intData','$changeTime')";
 
     $result = mysqli_query($conn,$sql);
     if($result){
-        echo "Attendance Updated Successfully";
+        echo "Change Times Updated Successfully";
     }else{
       die(mysqli_error($conn));
     
@@ -45,31 +48,42 @@ if(isset($_POST['submit'])){
 ?>
 
 <body>
-<h2> Attendance</h2>
+<h2> Diaper Change Tracker</h2>
 <br>
-<h3> Please Select All Students That Are Present Today:</h3>
-
+<h3> Please Select All Students That Have Had Diaper Changed Present Today:</h3>
 
 <p><b>**Important Notice: Please Submit 1 Student At A Time For Accurate Data </b></p>
 <div class="container my-5">
 <form method ="post">
 
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value= 1 > Jacob Hamilton
+    <input type="checkbox" name="data" value= 1 > Jacob Hamilton</input>
 </div>
 
-<div class="input-group-text my-3">
-    <input type="checkbox" name="data" value = 2 > Abby Pendleton
-</div>
+
+
+
 
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value = 3> Susan Smith
+    <input type="checkbox" name="data" value = 2 > Abby Pendleton</input>
 </div>
 
+
+
+
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value = 4> David White
-</div class="input-group-text my-3">
-<button class="btn btn-dark btn-lg my-3" name="submit" type="submit">Submit Attendance</button>
+    <input type="checkbox" name="data" value = 3> Susan Smith</input>
+</div>
+
+
+
+<div class="input-group-text my-3">
+    <input type="checkbox" name="data" value = 4> David White </input>
+    </div>
+
+
+
+<button class="btn btn-dark btn-lg my-3" name="submit" type="submit">Submit</button>
 
 </form>
 </div>

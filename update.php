@@ -13,40 +13,50 @@
 <?php
 
 include ("config.php");
+$childID = $_GET['updateid'];
 
-
-if(isset($_POST['submit'])){
-  $Child = $_POST['Child'];
-  $Contact = $_POST['Contact'];
-  $Email = $_POST['Email'];
-  $Parent = $_POST['Parent'];
-  $Username = $_POST['Username'];
- 
-
-
-
-
-$sql = "INSERT INTO `children` (Child,Contact,Email,Parent,Username) 
-VALUES ('$Child','$Contact','$Email','$Parent','$Username')";
+$sql = "SELECT * `children` WHERE ChildID =$childID";
 
 $result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+$child = $row['Child'];
+$contact = $row['Contact'];
+$email = $row['Email'];
+$parent= $row['Parent'];
+$username = $row['Username'];
+
+if(isset($_POST['update'])){
+$child = $_POST['Child'];
+$contact = $_POST['Contact'];
+$email = $_POST['Email'];
+$parent= $_POST['Parent'];
+$username = $_POST['Username'];
 
 
-    if($result){
-        
-        header('location:teacher.php');
-        
-    }else{
-      die(mysqli_error($conn));
-    
-    }
-   
+$sql ="UPDATE `children` SET Child= '$child', Contact='$contact',Email='$email',
+Parent='$parent',Username='$username' WHERE ChildID='$childID'";
+
+$result = mysqli_query($conn,$sql);
+if($result){
+    header('location:viewDatabase.php');
+}else{
+  die(mysqli_error($conn));
 
 }
 
+}
+
+
+
+
+    
+  
+
+
+
 ?>
 
-  <h3> Add New Student To Roster: </h3>
+  <h3> Update Information: </h3>
   <div class="container my-5">
   <form  method="POST">
     <div class=my-3>
@@ -59,36 +69,31 @@ $result = mysqli_query($conn,$sql);
     <div class=my-3>
       <label class="form-label"> Contact (Phone Number)</label>
       <input type="text" class="form-control"
-      placeholder="304-384-6335" name="Contact"></input>
+      placeholder="304-384-6335" name="Contact">
     
     </div>
 
     <div class=my-3>
       <label class="form-label"> Email</label>
       <input type="text" class="form-control"
-      placeholder="daycare@mycu.concord.edu" name="Email"></input>
+      placeholder="daycare@mycu.concord.edu" name="Email">
     
     </div>
 
     <div class=my-3>
       <label class="form-label"> Parent Name(s)</label>
       <input type="text" class="form-control"
-      placeholder="Enter Parent(s) Name" name="Parent"></input>
+      placeholder="Enter Parent(s) Name" name="Parent">
     
     </div>
 
     <div class=my-3>
       <label class="form-label"> Username</label>
       <input type="text" class="form-control"
-      placeholder="Enter Username" name="Username"></input>
+      placeholder="Enter Username" name="Username">
     
     </div>
-    <button class="btn btn-dark btn-lg my-3"name="submit">Submit</button>
-    <p><b>**Important Notice: In order to see the roster database update, please the refresh page after you've clicked 'Submit' </b></p>
-    <br>
-    <br>
-    <br>
-   
-    
+    <button class="btn btn-dark btn-lg my-3"name="update">Update</button>
+      
 </div>
 

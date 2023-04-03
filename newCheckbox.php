@@ -20,9 +20,7 @@ include ('config.php');
 if(isset($_POST['submit'])){
     $datas = $_POST['data'];
     $intData = (int)$datas;
-    date_default_timezone_set('America/New_York');
-    //echo date('m-d-y h:i:s A');
-    $date= (date('m-d-y h:i:s A'));
+    $date= (date('m-d-y h:i:s'));
 
     //$allData = implode($datas);
 
@@ -37,42 +35,48 @@ if(isset($_POST['submit'])){
     
     }
 
-    
+}
 
+$sql = "SELECT * FROM `children`";
+$result = mysqli_query($conn,$sql);
 
+while($row = mysqli_fetch_assoc($result)){
+
+$child = $row['Child'];
 
 }
-?>
+
+
+echo '
 
 <body>
-<h2> Attendance</h2>
-<br>
-<h3> Please Select All Students That Are Present Today:</h3>
-
-
-<p><b>**Important Notice: Please Submit 1 Student At A Time For Accurate Data </b></p>
+<h3> Please Select All Students That Are Present Today</h3>
 <div class="container my-5">
 <form method ="post">
 
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value= 1 > Jacob Hamilton
+    <input type="checkbox" name="data" value= 1 > '.$child.'
 </div>
 
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value = 2 > Abby Pendleton
+    <input type="checkbox" name="data" value = 2 > '.$child.'
 </div>
 
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value = 3> Susan Smith
+    <input type="checkbox" name="data" value = 3> '.$child.'
 </div>
 
 <div class="input-group-text my-3">
-    <input type="checkbox" name="data" value = 4> David White
+    <input type="checkbox" name="data" value = 4> '.$child.'
 </div class="input-group-text my-3">
 <button class="btn btn-dark btn-lg my-3" name="submit" type="submit">Submit Attendance</button>
-
 </form>
 </div>
+
+';
+
+
+?>
 
 </body>
 

@@ -65,7 +65,7 @@ img.brand {
 }
 
 iframe.cds {
-  background-color: grey;
+  background-color: black;
 }
 
 iframe.basic {
@@ -83,9 +83,14 @@ body.xbox {
   background-image: linear-gradient(green, white, green);
 }
 
-img.xbox {
+img.daycare {
   border: 5px solid black;
   border-radius: 5px;
+}
+.border{
+ border: 10px solid black;
+
+
 }
 
 h1.playstation {
@@ -183,7 +188,7 @@ h1.teacher2 {
 }
 
 hr.new1 {
-  border: 5px solid black;
+  border: 5px solid white;
   border-radius: 5px;
 }
 

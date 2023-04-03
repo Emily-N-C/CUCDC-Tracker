@@ -1,9 +1,9 @@
 <?php  
 /* Database Connection */  
 $sDbHost = 'localhost' ;  
-$sDbName = 'Daycare' ;  
+$sDbName = 'daycare' ;  
 $sDbUser = 'root';  
 $sDbPud = 'mysql';  
-$mysql = new mysqli($sDbHost, $sDbUser, $sDbPwd);  
-mysqli_select_db ($mysql, $sDbName);
+$conn = mysqli_connect($sDbHost,$sDbUser,$sDbPud,$sDbName);
+
 ?>  
