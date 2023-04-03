@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 03, 2023 at 08:01 PM
+-- Generation Time: Apr 03, 2023 at 08:59 PM
 -- Server version: 8.0.31
--- PHP Version: 7.4.32
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `attendance` (
   `ChildID` int NOT NULL,
-  `Date` varchar(256) COLLATE utf8mb4_general_ci NOT NULL
+  `Date` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `children` (
   `ChildID` int NOT NULL,
   `Child` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Contact` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Email` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Parent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Username` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -92,7 +92,7 @@ INSERT INTO `comments` (`Comments`, `ChildID`) VALUES
 
 CREATE TABLE `diaper Changes` (
   `ChildID` int NOT NULL,
-  `ChangeTime` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `ChangeTime` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -105,12 +105,38 @@ INSERT INTO `diaper Changes` (`ChildID`, `ChangeTime`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
+  `Email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Password` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`Email`, `Username`, `Password`) VALUES
+('tarahamilton@gmail.com', 'taraHam', 'T@ra1980'),
+('abbypendleton@gmail.com', 'AbbyCUDC', 'Abby#1234'),
+('janesmith@gmail.com', 'JustJane', 'J@ne1324'),
+('hunterwhite@gmail.com', 'HunterWhite', 'AVeryGoodPassword'),
+('katherinewilliams@gmail.com', 'Kathy77', 'K@thy77'),
+('christianabloom@gmail.com', 'ChristiB', 'ChristiDaycare'),
+('nancycook@gmail.com', 'NancyCook', 'APassword1'),
+('taylorjohns@gmail.com', 'TaysUser', 'T@ylorPassword');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `meal times`
 --
 
 CREATE TABLE `meal times` (
   `ChildID` int NOT NULL,
-  `MealTime` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `MealTime` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -128,7 +154,7 @@ INSERT INTO `meal times` (`ChildID`, `MealTime`) VALUES
 
 CREATE TABLE `nap times` (
   `ChildID` int NOT NULL,
-  `NapTime` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `NapTime` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -141,6 +167,35 @@ CREATE TABLE `parents` (
   `ChildID` int NOT NULL,
   `Parent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `signup`
+--
+
+CREATE TABLE `signup` (
+  `Child` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ChildID` int NOT NULL,
+  `ClassID` int NOT NULL,
+  `Contact` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Parent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Teacher` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Allergies` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Other` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `signup`
+--
+
+INSERT INTO `signup` (`Child`, `ChildID`, `ClassID`, `Contact`, `Parent`, `Username`, `Password`, `Teacher`, `Allergies`, `Other`) VALUES
+('Jacob Hamilton', 1, 1, '123-456-7891', 'Tara Hamilton', 'taraHam', 'T@ra1980', 'Katherine Williams', '', ''),
+('Georgia Pendleton', 2, 2, '109-876-5432', 'Abby Pendleton', 'AbbyCUDC', 'Abby#1234', 'Christiana Bloom', '', ''),
+('Susan Smith', 3, 3, '111-222-3333', 'Jane Smith', 'JustJane', 'J@ne1234', 'Nancy Cook', '', ''),
+('David White', 4, 4, '444-555-6666', 'Hunter White', 'HunterWhite', 'AVeryGoodPassword', 'Taylor Johns', '', '');
 
 -- --------------------------------------------------------
 
@@ -199,6 +254,12 @@ ALTER TABLE `parents`
   ADD PRIMARY KEY (`ChildID`);
 
 --
+-- Indexes for table `signup`
+--
+ALTER TABLE `signup`
+  ADD PRIMARY KEY (`ChildID`);
+
+--
 -- Indexes for table `teachers`
 --
 ALTER TABLE `teachers`
@@ -231,6 +292,12 @@ ALTER TABLE `nap times`
 --
 ALTER TABLE `parents`
   MODIFY `ChildID` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `signup`
+--
+ALTER TABLE `signup`
+  MODIFY `ChildID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
