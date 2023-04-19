@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 03, 2023 at 08:59 PM
+-- Generation Time: Apr 19, 2023 at 09:49 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `daycare`
+-- Database: `changes`
 --
 
 -- --------------------------------------------------------
@@ -109,8 +109,10 @@ INSERT INTO `diaper Changes` (`ChildID`, `ChangeTime`) VALUES
 --
 
 CREATE TABLE `login` (
+  `Position` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Name` text COLLATE utf8mb4_general_ci NOT NULL,
   `Email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Username` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Password` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -118,15 +120,15 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`Email`, `Username`, `Password`) VALUES
-('tarahamilton@gmail.com', 'taraHam', 'T@ra1980'),
-('abbypendleton@gmail.com', 'AbbyCUDC', 'Abby#1234'),
-('janesmith@gmail.com', 'JustJane', 'J@ne1324'),
-('hunterwhite@gmail.com', 'HunterWhite', 'AVeryGoodPassword'),
-('katherinewilliams@gmail.com', 'Kathy77', 'K@thy77'),
-('christianabloom@gmail.com', 'ChristiB', 'ChristiDaycare'),
-('nancycook@gmail.com', 'NancyCook', 'APassword1'),
-('taylorjohns@gmail.com', 'TaysUser', 'T@ylorPassword');
+INSERT INTO `login` (`Position`, `Name`, `Email`, `Username`, `Password`) VALUES
+('Parent', 'Abby Pendleton', 'abbypendleton@gmail.com', 'AbbyCUDC', 'Abby#1234'),
+('Teacher', 'Christiana Bloom', 'christianabloom@gmail.com', 'ChristiB', 'ChristiDaycare'),
+('Parent', 'Hunter White', 'hunterwhite@gmail.com', 'HunterWhite', 'AVeryGoodPassword'),
+('Parent', 'Jane Smith', 'janesmith@gmail.com', 'JustJane', 'J@ne1324'),
+('Teacher', 'Katherine Williams', 'katherinewilliams@gmail.com', 'Kathy77', 'K@thy77'),
+('Teacher', 'Nancy Cook', 'nancycook@gmail.com', 'NancyCook', 'APassword1'),
+('Parent', 'Tara Hamilton', 'tarahamilton@gmail.com', 'taraHam', 'T@ra1980'),
+('Teacher', 'Taylor Johns', 'taylorjohns@gmail.com', 'TaysUser', 'T@ylorPassword');
 
 -- --------------------------------------------------------
 
@@ -234,6 +236,12 @@ ALTER TABLE `children`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`ChildID`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`Username`);
 
 --
 -- Indexes for table `meal times`
