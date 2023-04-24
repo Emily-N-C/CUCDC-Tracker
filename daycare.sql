@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2023 at 09:49 PM
+-- Generation Time: Apr 24, 2023 at 06:34 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -113,22 +113,26 @@ CREATE TABLE `login` (
   `Name` text COLLATE utf8mb4_general_ci NOT NULL,
   `Email` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Username` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Password` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `Password` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Child` text COLLATE utf8mb4_general_ci NOT NULL,
+  `ChildID` int NOT NULL,
+  `Contact` text COLLATE utf8mb4_general_ci NOT NULL,
+  `Allergies` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`Position`, `Name`, `Email`, `Username`, `Password`) VALUES
-('Parent', 'Abby Pendleton', 'abbypendleton@gmail.com', 'AbbyCUDC', 'Abby#1234'),
-('Teacher', 'Christiana Bloom', 'christianabloom@gmail.com', 'ChristiB', 'ChristiDaycare'),
-('Parent', 'Hunter White', 'hunterwhite@gmail.com', 'HunterWhite', 'AVeryGoodPassword'),
-('Parent', 'Jane Smith', 'janesmith@gmail.com', 'JustJane', 'J@ne1324'),
-('Teacher', 'Katherine Williams', 'katherinewilliams@gmail.com', 'Kathy77', 'K@thy77'),
-('Teacher', 'Nancy Cook', 'nancycook@gmail.com', 'NancyCook', 'APassword1'),
-('Parent', 'Tara Hamilton', 'tarahamilton@gmail.com', 'taraHam', 'T@ra1980'),
-('Teacher', 'Taylor Johns', 'taylorjohns@gmail.com', 'TaysUser', 'T@ylorPassword');
+INSERT INTO `login` (`Position`, `Name`, `Email`, `Username`, `Password`, `Child`, `ChildID`, `Contact`, `Allergies`) VALUES
+('Parent', 'Abby Pendleton', 'abbypendleton@gmail.com', 'AbbyCUDC', 'Abby#1234', 'Georgia Pendleton', 2, '109-876-5342', ''),
+('Teacher', 'Christiana Bloom', 'christianabloom@gmail.com', 'ChristiB', 'ChristiDaycare', '', 0, '0', ''),
+('Parent', 'Hunter White', 'hunterwhite@gmail.com', 'HunterWhite', 'AVeryGoodPassword', 'David White', 4, '366-553-7896', ''),
+('Parent', 'Jane Smith', 'janesmith@gmail.com', 'JustJane', 'J@ne1324', 'Susan Smith', 3, '111-222-3333', ''),
+('Teacher', 'Katherine Williams', 'katherinewilliams@gmail.com', 'Kathy77', 'K@thy77', '', 0, '0', ''),
+('Teacher', 'Nancy Cook', 'nancycook@gmail.com', 'NancyCook', 'APassword1', '', 0, '0', ''),
+('Parent', 'Tara Hamilton', 'tarahamilton@gmail.com', 'taraHam', 'T@ra1980', 'Jacob Hamilton', 1, '123-456-7891', ''),
+('Teacher', 'Taylor Johns', 'taylorjohns@gmail.com', 'TaysUser', 'T@ylorPassword', '', 0, '0', '');
 
 -- --------------------------------------------------------
 
