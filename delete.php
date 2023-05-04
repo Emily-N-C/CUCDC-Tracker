@@ -3,16 +3,17 @@
 
 
 include ("config.php");
-$childID = $_GET['deleteid'];
 
-$sql = "DELETE FROM`children` WHERE ChildID =$childID";
-$sql1 = "ALTER TABLE `children` AUTO_INCREMENT =1";
+$username = $_GET['deleteid'];
+
+$sql = "DELETE FROM`login` WHERE Username = '$username'";
+
 
 $result = mysqli_query($conn,$sql);
-$result1 = mysqli_query($conn,$sql1);
+
 
 if($result){
-    header('location:viewDatabase.php');
+    header('location:director.php');
 }else{
   die(mysqli_error($conn));
 

@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
 
     //$allData = implode($datas);
 
-    $sql ="INSERT into `nap times` (ChildID,NapTime) 
+    $sql ="INSERT into `naptimes` (ChildID,NapTime) 
     VALUES ('$intData','$napTime')";
 
     $result = mysqli_query($conn,$sql);
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 <body>
 <h2> Sleep Tracker</h2>
 <br>
-<h3> Please Select All Students That Have Taken a Nap Present Today:</h3>
+<h3> Please Select All Students That Have Taken a Nap Today:</h3>
 
 <p><b>**Important Notice: Please Submit 1 Student At A Time For Accurate Data </b></p>
 <div class="container my-5">

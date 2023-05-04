@@ -13,32 +13,39 @@
 <?php
 
 include ("config.php");
-$childID = $_GET['updateid'];
+$userid = $_GET['updateid'];
 
-$sql = "SELECT * `children` WHERE ChildID =$childID";
+$sql = "SELECT * `login` WHERE Username =$userid";
 
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($result);
+$name = $row['Name'];
+$email = $row['Email'];
+$username = $row['Username'];
+$password = $row['Password'];
 $child = $row['Child'];
 $contact = $row['Contact'];
-$email = $row['Email'];
-$parent= $row['Parent'];
-$username = $row['Username'];
+$allergies = $row['Allergies'];
+
+
 
 if(isset($_POST['update'])){
-$child = $_POST['Child'];
-$contact = $_POST['Contact'];
-$email = $_POST['Email'];
-$parent= $_POST['Parent'];
-$username = $_POST['Username'];
+ // $name = $_POST['Name'];
+  $username = $_POST['Username'];
+  $child = $_POST['Child'];
+  $email = $_POST['Email'];
+  $password = $_POST['Password'];
+  $contact = $_POST['Contact'];
+  $allergies = $_POST['Allergies'];
 
 
-$sql ="UPDATE `children` SET Child= '$child', Contact='$contact',Email='$email',
-Parent='$parent',Username='$username' WHERE ChildID='$childID'";
+
+$sql ="UPDATE `login` SET Contact='$contact',Email='$email',
+Child='$child',Password='$password',Allergies='$allergies', Username='$username' WHERE Name='$userid'";
 
 $result = mysqli_query($conn,$sql);
 if($result){
-    header('location:viewDatabase.php');
+    header('location:director.php');
 }else{
   die(mysqli_error($conn));
 
@@ -59,17 +66,20 @@ if($result){
   <h3> Update Information: </h3>
   <div class="container my-5">
   <form  method="POST">
-    <div class=my-3>
-      <label class="form-label"> Child Name</label>
-      <input type="text" class="form-control"
-      placeholder="Enter child's first name" name= "Child">
     
-    </div>
 
     <div class=my-3>
       <label class="form-label"> Contact (Phone Number)</label>
       <input type="text" class="form-control"
       placeholder="304-384-6335" name="Contact">
+    
+    </div>
+
+
+    <div class=my-3>
+      <label class="form-label"> Name of Child</label>
+      <input type="text" class="form-control"
+      placeholder="Enter Name" name="Child">
     
     </div>
 
@@ -81,19 +91,32 @@ if($result){
     </div>
 
     <div class=my-3>
-      <label class="form-label"> Parent Name(s)</label>
+      <label class="form-label"> Username</label>
       <input type="text" class="form-control"
-      placeholder="Enter Parent(s) Name" name="Parent">
+      placeholder="daycare@mycu.concord.edu" name="Username">
     
     </div>
 
-    <div class=my-3>
-      <label class="form-label"> Username</label>
+  
+
+<div class=my-3>
+      <label class="form-label"> Password</label>
       <input type="text" class="form-control"
-      placeholder="Enter Username" name="Username">
-    
-    </div>
-    <button class="btn btn-dark btn-lg my-3"name="update">Update</button>
-      
+      placeholder="Enter Password" name="Password">
 </div>
+
+
+<div class=my-3>
+      <label class="form-label"> Allergies</label>
+      <input type="text" class="form-control"
+      placeholder="Enter Allergie(s)" name="Allergies">
+</div>
+    
+    
+    <div>
+    <button class="btn btn-dark btn-lg my-3"name="update">Update</button>
+</div>
+</div>
+
+
 

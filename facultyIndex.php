@@ -1,3 +1,24 @@
+<!doctype html 
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="Finalstyles.css" />
+</head>
+<?php
+session_start();
+if(isset($_SESSION['Username'])){
+
+
+
+?>
+
+
+
 <!doctype html>
 <html>
    <head>
@@ -16,7 +37,12 @@
 
 <tr>
 <center><img class=daycare src="concordDaycare.png" width=350></img>
+<br>
+<br>
+<br>
 
+<h2> Welcome <?php  echo $_SESSION['Name']; ?></h2>
+<br>
 </tr>
 </table>
 
@@ -26,13 +52,11 @@
 	 
 	
 	 
-	 <th> <p class="solid"><a href=index.htm>Home</a></p></th>
-	 <th> <p class="solid"><a href=teacher.html>Teacher</a></p></th><br>
-	 <th> <p class="solid"><a href=parent.html>Parent</a></p></th>
-	 <th> <p class="solid"><a href=director.html>Director</a></p></th>
-	 <th> <p class="solid"><a href=signup.html>Sign Up Form</a></p></th>
-	 <th> <p class="solid"><a href=about.html>About Us</a></p></th>
-
+	 <th> <p class="solid"><a href=facultyIndex.php>Home</a></p></th>
+	 <th> <p class="solid"><a href=director.html>Director/Teacher</a></p></th>
+	 <th> <p class="solid"><a href=signup2.php>Sign Up Form</a></p></th>
+	 <th> <p class="solid"><a href=login.php>Log Out</a></p></th>
+	 
 
 	
 </tr>
@@ -172,3 +196,11 @@
 
 </body>
 </html>
+
+
+<?php
+}
+else{
+	echo "Could Not Load Profile";
+}
+?>

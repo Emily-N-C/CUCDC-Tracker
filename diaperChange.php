@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
 
     //$allData = implode($datas);
 
-    $sql ="INSERT into `diaper Changes` (ChildID,ChangeTime) 
+    $sql ="INSERT into `diaperChanges` (ChildID,ChangeTime) 
     VALUES ('$intData','$changeTime')";
 
     $result = mysqli_query($conn,$sql);

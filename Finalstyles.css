@@ -42,6 +42,11 @@ body.parent {
 body.teacher {
   background-image: linear-gradient(40deg, firebrick, grey);
 }
+
+body.teacher1 {
+  background-image: linear-gradient(40deg, rgb(20, 1, 1), grey);
+}
+
 body.meals {
   background-image: linear-gradient(40deg, firebrick, grey);
 }
@@ -79,18 +84,18 @@ h1.xbox {
   font-family: Optima;
 }
 
-body.xbox {
-  background-image: linear-gradient(green, white, green);
-}
-
 img.daycare {
   border: 5px solid black;
   border-radius: 5px;
 }
-.border{
- border: 10px solid black;
+img.border {
+  border: 10px solid black;
+  border-radius: 5px;
+}
 
-
+img {
+  max-width: 300%;
+  max-height: 300%;
 }
 
 h1.playstation {
@@ -175,7 +180,10 @@ p.header {
   font-family: Impact;
   font-size: 300%;
 }
-
+p.arial {
+  font-family: Arial;
+  font-size: 500%;
+}
 h1.teacher {
   color: white;
   font-family: Palatino;
@@ -254,8 +262,22 @@ img.avatar {
   border-radius: 50%;
 }
 
-.container {
-  padding: 16px;
+.thecontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+text.text {
+  font-size: 20%;
+  padding-left: 30%;
+  padding-top: 20%;
+  float: left;
 }
 
 span.psw {
@@ -263,12 +285,17 @@ span.psw {
   padding-top: 16px;
 }
 
+.error {
+  background: #f2dede;
+  color: #a94442;
+  padding: 10px;
+  width: 95%;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
     float: none;
-  }
-  .cancelbtn {
-    width: 100%;
   }
 }

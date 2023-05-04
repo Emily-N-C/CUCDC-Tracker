@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
 
     //$allData = implode($datas);
 
-    $sql ="INSERT into `meal times` (ChildID,MealTime) 
+    $sql ="INSERT into `mealtimes` (ChildID,MealTime) 
     VALUES ('$intData','$mealTime')";
 
     $result = mysqli_query($conn,$sql);
@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 <body>
 <h2> Meal Tracker</h2>
 <br>
-<h3> Please Select All Students That Have Eaten Present Today:</h3>
+<h3> Please Select All Students That Have Eaten Today:</h3>
 
 <p><b>**Important Notice: Please Submit 1 Student At A Time For Accurate Data </b></p>
 <div class="container my-5">
